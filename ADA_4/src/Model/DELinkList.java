@@ -1,6 +1,6 @@
 package Model;
 
-public class DELinkList<E> {
+public class DELinkList<E extends Comparable<E>> {
     private DELink<E> first;
     private DELink<E> last; 
     
@@ -48,5 +48,55 @@ public class DELinkList<E> {
         }
         System.out.println("<--last)");
     }
+
+
+    public DELink<E> getFirts(){
+        return first;
+    }
+
+    public DELink<E> getLast(){
+        return last;
+    }
+
+    public int getSize(){
+        int size = 0;
+        DELink<E> current = first;
+        while(current != null) {
+            current = current.next; 
+            size++;
+        }
+
+        return size;
+    }
+
+    public void insertBefore(E dd, E referencedd){
+        DELink<E> newNode = new DELink<E>(dd);
+        //DELink<E> referencedNodeTemp = new DELink<E>(referencedd);
+        DELink<E> current = first;
+        while(current != null){
+            
+
+            //Caso donde el primero elemento es la referencia
+            if(first.dData.compareTo(referencedd)== 0){
+                DELink<E> temp = first;
+                newNode.next = temp;
+                first = newNode;
+                return;
+            }
+            
+            
+            if(current.next.dData.compareTo(referencedd) == 0){
+                DELink<E> temp = current.next;
+                newNode.next = temp;
+                current.next = newNode;
+               return;
+            }
+            current = current.next;
+            
+        }
+
+    }
+
+
 
 }

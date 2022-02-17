@@ -1,7 +1,7 @@
 package Model;
 
-public class LinkList {
-    private Link first;
+public class LinkList <T>{
+    private Link<T> first;
     
     public LinkList() {
         first = null;
@@ -11,14 +11,14 @@ public class LinkList {
         return (first==null);
     }
 
-    public void insertFirst(double dd) { 
-        Link newLink = new Link(dd);
+    public void insertFirst(T dd) { 
+        Link<T> newLink = new Link<T>(dd);
         newLink.next = first; 
         first = newLink;
     }
 
-    public Link deleteFirst() {
-        Link temp=null; 
+    public Link<T> deleteFirst() {
+        Link<T> temp=null; 
         if(!isEmpty()){
             temp = first;
             first = first.next;
@@ -28,7 +28,7 @@ public class LinkList {
 
     public void displayList() {
         System.out.print("List (first--> ");
-        Link current = first;
+        Link<T> current = first;
         while(current != null) {
             current.displayLink(); 
             current = current.next; 
