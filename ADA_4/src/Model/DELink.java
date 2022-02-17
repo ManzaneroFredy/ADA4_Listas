@@ -1,10 +1,10 @@
 package Model;
 
-public class DELink {
-    public double dData;
-    public DELink next; 
+public class DELink<E> {
+    public E dData;
+    public DELink<E> next; 
 
-    public DELink(double dd) {
+    public DELink(E dd) {
         dData = dd;
     }
 

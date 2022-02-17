@@ -1,10 +1,8 @@
 package Model;
 
-
-
-public class DELinkList {
-    private DELink first;
-    private DELink last; 
+public class DELinkList<E> {
+    private DELink<E> first;
+    private DELink<E> last; 
     
     public DELinkList() {
         first = null;
@@ -15,16 +13,16 @@ public class DELinkList {
         return (first==null);
     }
 
-    public void insertFirst(double dd) { 
-        DELink newLink = new DELink(dd);
+    public void insertFirst(E dd) { 
+        DELink<E> newLink = new DELink<E>(dd);
         if(isEmpty())
             last = newLink;
         newLink.next = first; 
         first = newLink;
     }
 
-    public void insertLast(double dd) { 
-        DELink newLink = new DELink(dd);
+    public void insertLast(E dd) { 
+        DELink<E> newLink = new DELink<E>(dd);
         if(isEmpty())
             first = newLink;
         else
@@ -33,8 +31,8 @@ public class DELinkList {
     }
 
 
-    public double deleteFirst() {
-        double temp = first.dData;
+    public E deleteFirst() {
+        E temp = first.dData;
         if(first.next == null)
             last = null;
         first = first.next;
@@ -43,7 +41,7 @@ public class DELinkList {
 
     public void displayList() {
         System.out.print("List (first--> ");
-        DELink current = first;
+        DELink<E> current = first;
         while(current != null) {
             current.displayLink(); 
             current = current.next; 
