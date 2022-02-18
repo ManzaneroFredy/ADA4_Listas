@@ -1,8 +1,8 @@
 package Model;
 
 public class Link <T> {
-    public T dData;
-    public Link<T> next; 
+    private T dData;
+    private Link<T> next; 
 
     public Link(T dd) {
         dData = dd;
@@ -11,4 +11,23 @@ public class Link <T> {
     public void displayLink() {
         System.out.print("{" + dData + "} ");
     }
+
+    public T getdData() {
+        return dData;
+    }
+
+    public void setdData(T dData) {
+        this.dData = dData;
+    }
+
+    public Link<T> getNext() {
+        return next;
+    }
+
+    public void setNext(Link<T> next) {
+        this.next = next;
+    }
+
+    
+
 }
