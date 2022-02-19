@@ -27,8 +27,41 @@ public class App {
         System.out.println("");
 
         System.out.println("Insert Before");
-        list.insertBefore(100.0,8.99);
+        list.insertBefore(102.0,2.99);
         list.displayList();
+
+        System.out.println("Insert Last");
+        list.insertAfter(30.0,2.99);
+        list.displayList();
+
+
+        System.out.println("Delete Especific Element");
+        list.deleteEspecificElement(102.0);
+        list.displayList();
+
+        System.out.println("Delete with Index");
+        list.deleteWithIndex(5);
+        list.displayList();
+
+        System.out.println("Search Element and position");
+        int searchValue = list.searchElement(4.99);
+        if(searchValue == -1){
+            System.out.println("Element not found: " + searchValue);
+        }else{
+            System.out.println("Element found in position: "+ searchValue);
+        }
+        list.displayList();
+
+
+        System.out.println("Replace element in position");
+        list.replaceWithIndex(8.99,3);
+        list.displayList();
+
+
+        // list.cleanList();
+
+        // list.displayList();
+        
         
     }
 }
