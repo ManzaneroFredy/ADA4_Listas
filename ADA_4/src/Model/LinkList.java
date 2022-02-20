@@ -1,5 +1,9 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 public class LinkList<T> {
     private Link<T> first;
 
@@ -112,19 +116,112 @@ public class LinkList<T> {
 
     // Método 6: Insertar un elemento de forma ordenada.
     // Método 6A: Insertar un elemento de forma ordenada Creciente
-    /*
-    public void insertarElementoFormaCreciente(Link<T> elemento){
+    
+    // Método extra: Comparar dos Strings.
+    private boolean esMayor(String cadenaComparar, String cadenaAComparar){
+        //Primero se debe comparar las primeras letras de los Strings
+        if(cadenaComparar.charAt(0) == cadenaAComparar.charAt(0)){
+            //Si la primera letra de la String es igual, entonces se deben comprobar todas las demás letras
+            //Primero debo comprobar cual es la String más pequeña, para que no me de una excepción de tamaño de arreglo
+
+            if(cadenaComparar.length() >= cadenaAComparar.length()){
+                int i = 1;
+                //Como ya se comprobo el primer caracter, entonces, paso al siguiente
+                for(i = 1; i < cadenaAComparar.length(); i++){
+                    //Si en algún momento, una letra de la string es mayor, se rompe el bucle, y se envia cual es la mayor
+                    if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
+                        return true;
+                    }else{
+                        if(cadenaComparar.charAt(i) < cadenaAComparar.charAt(i)){
+                            return false;
+                        }
+                    }
+                }
+
+                if(i == cadenaAComparar.length()){
+                    return false;
+                }
+                ArrayList<String> a = new ArrayList<>();
+                
+            }else{
+                int i = 1;
+                for(i = 1; i < cadenaComparar.length(); i++){
+                    if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
+                        return true;
+                    }else{
+                        if(cadenaComparar.charAt(i) < cadenaAComparar.charAt(i)){
+                            return false;
+                        }
+                    }
+                }
+            }
+
+        }else{
+            if(cadenaComparar.charAt(0) > cadenaAComparar.charAt(0)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        return false;
+
+        // if(cadenaComparar.charAt(0) == cadenaAComparar.charAt(0)){
+        //     if(cadenaComparar.length()>= cadenaAComparar.length()){
+        //         for(int i = 1; i < cadenaAComparar.length(); i++){
+        //             if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
+        //                 return true;
+        //             }
+        //         }
+        //     }else{
+        //         for(int i = 1; i < cadenaComparar.length(); i++){
+        //             if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
+        //                 return true;
+        //             }
+        //         }
+        //     }
+        // }else{
+        //     return false;
+        // }
+        // return false;
+    }
+
+    
+    public void insertarElementoFormaCreciente(T dd){
+        Link<T> elemento = new Link<>(dd);
         Link<T> current;
         Link<T> previous = first;
         current = first;
+        
 
-        while(current.getNext() != null){
-            if(current.getdData().toString(). < elemento.getdData()){
-
+        if(this.isEmpty()){
+            this.insertFirst(dd);
+        }else{
+            while(current != null){
+                if(esMayor(current.getdData().toString(), elemento.getdData().toString())){
+                    if(current == first){
+                        this.insertFirst(dd);
+                        break;
+                    }else{
+                        previous.setNext(elemento);
+                        elemento.setNext(current);
+                        break;
+                    }
+                }else{
+                    previous = current;
+                    current = current.getNext();
+                }
             }
+
+            if(current == null){
+                previous.setNext(elemento);
+            }
+
         }
+
+       
     }
-    */
+    
 
     // Método 7: Eliminar un elemento proporcionando su dato
     public void eliminarElemento(T datoAEliminar) {

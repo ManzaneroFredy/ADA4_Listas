@@ -1,11 +1,13 @@
 package Test;
 
-import Model.Link;
+import Model.Archivo;
 import Model.LinkList;
+import Model.Movie;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        LinkList<Integer> lista = new LinkList<>();
+        LinkList<Movie> pelisPro = new LinkList<>();
+        Archivo archivoPelis = new Archivo();
         /*
         LinkList<String> lista = new LinkList<>();
         Link<String> elemento = new Link<String>("Omar");
@@ -32,12 +34,35 @@ public class App {
         lista.displayList();
     */
 
-        Link<Integer> elemento = new Link<>(2);
-        Link<Integer> elemento2 = new Link<>(6);
-        Link<Integer> elemento3 = new Link<>(12);
-        Link<Integer> elemento4 = new Link<>(1);
+        
 
+        /*
+        lista.insertarElementoFormaCreciente(15);
+        lista.insertarElementoFormaCreciente(12);
+        lista.insertarElementoFormaCreciente(16);
+        lista.insertarElementoFormaCreciente(54);
+        lista.insertarElementoFormaCreciente(13);
+        lista.insertarElementoFormaCreciente(13);
+        lista.insertarElementoFormaCreciente(11);
+        lista.insertarElementoFormaCreciente(1);
+        lista.insertarElementoFormaCreciente(13);
+        lista.insertarElementoFormaCreciente(10);
+        lista.insertarElementoFormaCreciente(10);
+        lista.insertarElementoFormaCreciente(10);
+        lista.insertarElementoFormaCreciente(13);
+        */
 
-
+        
+        for(int i = 0; i < 10; i++){
+            pelisPro.insertFirst(archivoPelis.leerDocumento(i));
+            System.out.println(pelisPro.obtenerPrimerElemento().getdData().getMovie_title());
+        }
+        
+        pelisPro.deleteFirst();
+        System.out.println("depues de borrar " + pelisPro.obtenerPrimerElemento().getdData().getMovie_title());
+        System.out.println(pelisPro.obtenerUltimoElemento().getdData().getMovie_title());
+        
+        pelisPro.displayList();
+         
     }
 }
