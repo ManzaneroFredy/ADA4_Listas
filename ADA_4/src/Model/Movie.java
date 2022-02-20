@@ -1,7 +1,7 @@
 package Model;
 
 
-public class Movie<T extends Comparable<T>> {
+public class Movie implements Comparable<Movie> {
     private int id; //1
     private String movie_title; //2
     private int duration; //3
@@ -136,6 +136,19 @@ public class Movie<T extends Comparable<T>> {
 
     public void setMovie_imdb_link(String movie_imdb_link) {
         this.movie_imdb_link = movie_imdb_link;
+    }
+
+    @Override
+    public int compareTo(Movie au) {
+        int last = this.movie_title.compareTo(au.movie_title);
+        // Sorting by first name if last name is same d
+        return last;
+    }
+
+    @Override
+    public String toString() {
+        
+        return movie_title;
     }
 
 }

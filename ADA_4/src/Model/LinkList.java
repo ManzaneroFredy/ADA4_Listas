@@ -78,21 +78,21 @@ public class LinkList<T extends Comparable<T>> {
         Link<T> current;
         current = first;
 
-        if (current.getdData() == datoABuscar) {
-            elementoInsertar.setNext(first);
+        if (current.getdData().compareTo(datoABuscar) == 0) {
+            Link<T> temp = first;
+            elementoInsertar.setNext(temp);
             first = elementoInsertar;
+            return;
         } else {
-
-            while (current.getNext() != null) {
-                if (current.getNext().getdData() == datoABuscar) {
+            while (current != null) {
+                if (current.getNext().getdData().compareTo(datoABuscar) == 0) {
+                    Link<T> temp = current.getNext();
+                    elementoInsertar.setNext(temp);
+                    current.setNext(temp);
                     break;
-                } else {
-                    current = current.getNext();
                 }
-
+                current = current.getNext();
             }
-            elementoInsertar.setNext(current.getNext());
-            current.setNext(elementoInsertar);
         }
     }
 
@@ -103,163 +103,89 @@ public class LinkList<T extends Comparable<T>> {
         current = first;
 
         while (current != null) {
-            if (current.getdData() == datoABuscar) {
+            if (current.getdData().compareTo(datoABuscar) == 0) {
+                Link<T> temp = current.getNext();
+                elementoInsertar.setNext(temp);
+                current.setNext(elementoInsertar);
                 break;
-            } else {
-                current = current.getNext();
-            }
+            } 
+            current = current.getNext();
         }
-
-        elementoInsertar.setNext(current.getNext());
-        current.setNext(elementoInsertar);
     }
 
     // Método 6: Insertar un elemento de forma ordenada.
     // Método 6A: Insertar un elemento de forma ordenada Creciente
-    
-    // Método extra: Comparar dos Strings.
-    private boolean esMayor(String cadenaComparar, String cadenaAComparar){
-        //Primero se debe comparar las primeras letras de los Strings
-        if(cadenaComparar.charAt(0) == cadenaAComparar.charAt(0)){
-            //Si la primera letra de la String es igual, entonces se deben comprobar todas las demás letras
-            //Primero debo comprobar cual es la String más pequeña, para que no me de una excepción de tamaño de arreglo
+    public void insertAscending(T dd) {
+        Link<T> current = first;
 
-            if(cadenaComparar.length() >= cadenaAComparar.length()){
-                int i = 1;
-                //Como ya se comprobo el primer caracter, entonces, paso al siguiente
-                for(i = 1; i < cadenaAComparar.length(); i++){
-                    //Si en algún momento, una letra de la string es mayor, se rompe el bucle, y se envia cual es la mayor
-                    if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
-                        return true;
-                    }else{
-                        if(cadenaComparar.charAt(i) < cadenaAComparar.charAt(i)){
-                            return false;
-                        }
-                    }
-                }
+        if (isEmpty()) {
+            insertFirst(dd);
+            // Debug
+            // displayList();
 
-                if(i == cadenaAComparar.length()){
-                    return false;
+            // System.out.println(first);
+        } else {
+            while (current != null) {
+                if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
+                    insertFirst(dd);
+                    // Debug
+                    // displayList();
+                    return;
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getdData() != null
+                        && current.getdData().compareTo(dd) > 0) {
+                    this.insertarDespuesDeUnElemento(dd, current.getdData());
+                    // Debug
+                    // displayList();
+                    return;
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
+                    Link<T> temp;
+                    Link<T> nodoNuevo = new Link<>(dd);
+                    temp = this.recorreLista();
+                    temp.setNext(nodoNuevo);
+                    // Debug
+                    // displayList();
+                    return;
                 }
-                ArrayList<String> a = new ArrayList<>();
-                
-            }else{
-                int i = 1;
-                for(i = 1; i < cadenaComparar.length(); i++){
-                    if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
-                        return true;
-                    }else{
-                        if(cadenaComparar.charAt(i) < cadenaAComparar.charAt(i)){
-                            return false;
-                        }
-                    }
-                }
-            }
-
-        }else{
-            if(cadenaComparar.charAt(0) > cadenaAComparar.charAt(0)){
-                return true;
-            }else{
-                return false;
+                current = current.getNext();
             }
         }
-
-        return false;
-
-        // if(cadenaComparar.charAt(0) == cadenaAComparar.charAt(0)){
-        //     if(cadenaComparar.length()>= cadenaAComparar.length()){
-        //         for(int i = 1; i < cadenaAComparar.length(); i++){
-        //             if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
-        //                 return true;
-        //             }
-        //         }
-        //     }else{
-        //         for(int i = 1; i < cadenaComparar.length(); i++){
-        //             if(cadenaComparar.charAt(i) > cadenaAComparar.charAt(i)){
-        //                 return true;
-        //             }
-        //         }
-        //     }
-        // }else{
-        //     return false;
-        // }
-        // return false;
     }
 
- /*
-    public void insertarElementoFormaCreciente(T dd){
-        Link<T> elemento = new Link<>(dd);
-        Link<T> current;
-        Link<T> previous = first;
-        current = first;
-        
+    // Método 6B: Insertar un elemento de forma ordenada Decreciente
+    public void insertDescending(T dd) {
+        Link<T> current = first;
 
-        if(this.isEmpty()){
-            this.insertFirst(dd);
-        }else{
-            while(current != null){
-                if(esMayor(current.getdData().toString(), elemento.getdData().toString())){
-                    if(current == first){
-                        this.insertFirst(dd);
-                        break;
-                    }else{
-                        previous.setNext(elemento);
-                        elemento.setNext(current);
-                        break;
-                    }
-                }else{
-                    previous = current;
-                    current = current.getNext();
+        if (isEmpty()) {
+            insertFirst(dd);
+            // Debug
+            // displayList();
+
+            // System.out.println(first);
+        } else {
+            while (current != null) {
+                if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
+                    Link<T> temp = this.recorreLista();
+                    temp.setNext(new Link<T>(dd));
+
+                    // Debug
+                    // displayList();
+                    return;
+                } else if (current.getdData().compareTo(dd) >= 0 && current.getNext() != null
+                        && current.getNext().getdData().compareTo(dd) < 0) {
+                            this.insertarAntesDeUnElemento(dd, current.getdData());
+                    // Debug
+                    // displayList();
+                    return;
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
+                    insertFirst(dd);
+                    // Debug
+                    // displayList();
+                    return;
                 }
+                current = current.getNext();
             }
-
-            if(current == null){
-                previous.setNext(elemento);
-            }
-
-        }
-
-       
-    }
-    
-*/
-
-
-public void insertAscending(T dd) {
-    Link<T> current = first;
-
-    if (isEmpty()) {
-        insertFirst(dd);
-        // Debug
-        // displayList();
-
-        // System.out.println(first);
-    } else {
-        while (current != null) {
-            if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
-                insertFirst(dd);
-                // Debug
-                // displayList();
-                return;
-            } else if (current.getdData().compareTo(dd) <= 0 && current.getdData() != null
-                    && current.getdData().compareTo(dd) > 0) {
-                this.insertarAntesDeUnElemento(dd, current.getdData());
-                // Debug
-                // displayList();
-                return;
-            } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
-                Link<T> temp;
-                Link<T> nodoNuevo = new Link<>(dd);
-                temp = this.recorreLista();
-                temp.setNext(nodoNuevo);
-                // Debug
-                // displayList();
-                return;
-            }
-            current = current.getNext();
         }
     }
-}
 
     // Método 7: Eliminar un elemento proporcionando su dato
     public void eliminarElemento(T datoAEliminar) {
@@ -325,21 +251,22 @@ public void insertAscending(T dd) {
         return -1;
     }
 
-    //Método 11: reemplazar un nodo por otro nodo mediante una posición
-    public void reemplazarElemento(Link<T> elemento, int index){
+    // Método 11: reemplazar un nodo por otro nodo mediante una posición
+    public void reemplazarElemento(T dd, int index) {
+        Link<T> elemento = new Link<>(dd);
         Link<T> current;
         Link<T> previous = first;
         current = first;
-        
 
-        if(index > this.size()){
-            System.out.println("El indice indicando para reemplazar el elemento es más grande que el tamaño de la lista");
-        }else{
-            if(index == 1){
+        if (index > this.size()) {
+            System.out
+                    .println("El indice indicando para reemplazar el elemento es más grande que el tamaño de la lista");
+        } else {
+            if (index == 1) {
                 elemento.setNext(first.getNext());
                 first = elemento;
-            }else{
-                for(int i = 1; i < index; i++){
+            } else {
+                for (int i = 1; i < index; i++) {
                     previous = current;
                     current = current.getNext();
                 }

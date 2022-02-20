@@ -1,15 +1,16 @@
 package Test;
 
-import Model.Archivo;
 import Model.LinkList;
 import Model.Movie;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        /*
         LinkList<Movie> pelisPro = new LinkList<>();
         LinkList<String> movie_titles = new LinkList<>();
         Archivo archivoPelis = new Archivo();
         Movie aaa = new Movie("Omar");
+        */
         /*
         LinkList<String> lista = new LinkList<>();
         Link<String> elemento = new Link<String>("Omar");
@@ -55,18 +56,17 @@ public class App {
         */
 
         
-        for(int i = 0; i < 10; i++){
-            pelisPro.insertFirst(archivoPelis.leerDocumento(i));
-            System.out.println(pelisPro.obtenerPrimerElemento().getdData().getMovie_title());
-        }
-        
-        pelisPro.deleteFirst();
-        System.out.println("depues de borrar " + pelisPro.obtenerPrimerElemento().getdData().getMovie_title());
-        System.out.println(pelisPro.obtenerUltimoElemento().getdData().getMovie_title());
-
-        pelisPro.insertAscending(aaa);
-        
-        pelisPro.displayList();
-         
+        LinkList<Movie> listMovies = new LinkList<Movie>();
+        Movie movie2 = new Movie("Chino la pelicula ");
+        Movie movie3 = new Movie("Aleluya");
+        Movie movie4 = new Movie("Ted");
+        Movie movie5 = new Movie("Amigo ven te invito una copa");
+        Movie movie6 = new Movie("Ted");
+        listMovies.insertAscending(movie3);
+        listMovies.insertAscending(movie2);
+        listMovies.insertAscending(movie4);
+        listMovies.insertAscending(movie5);
+        //listMovies.insertAscending(movie6);
+        listMovies.displayList();
     }
 }
