@@ -62,11 +62,11 @@ public class App {
         Movie movie4 = new Movie("Ted");
         Movie movie5 = new Movie("Amigo ven te invito una copa");
         Movie movie6 = new Movie("Ted");
-        listMovies.insertAscending(movie3);
         listMovies.insertAscending(movie2);
+        listMovies.insertAscending(movie3);
         listMovies.insertAscending(movie4);
         listMovies.insertAscending(movie5);
-        //listMovies.insertAscending(movie6);
+        listMovies.insertAscending(movie6);
         listMovies.displayList();
     }
 }

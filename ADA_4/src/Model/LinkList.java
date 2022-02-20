@@ -97,17 +97,17 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     // Método 5: insertar un elemento despues de uno proporcionado
-    public void insertarDespuesDeUnElemento(T dd, T datoABuscar) {
+    public void insertarDespuesDeUnElemento(T dd, T referenceddd) {
         Link<T> elementoInsertar = new Link<>(dd);
         Link<T> current;
         current = first;
 
         while (current != null) {
-            if (current.getdData().compareTo(datoABuscar) == 0) {
+            if (current.getdData().compareTo(referenceddd) == 0) {
                 Link<T> temp = current.getNext();
                 elementoInsertar.setNext(temp);
                 current.setNext(elementoInsertar);
-                break;
+                return;
             } 
             current = current.getNext();
         }
@@ -126,22 +126,30 @@ public class LinkList<T extends Comparable<T>> {
             // System.out.println(first);
         } else {
             while (current != null) {
-                if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
+                if (current.getdData().compareTo(dd) > 0 && current.getNext() == null) {
+                    
                     insertFirst(dd);
                     // Debug
                     // displayList();
                     return;
-                } else if (current.getdData().compareTo(dd) <= 0 && current.getdData() != null
-                        && current.getdData().compareTo(dd) > 0) {
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() != null
+                        && current.getNext().getdData().compareTo(dd) > 0) {
                     this.insertarDespuesDeUnElemento(dd, current.getdData());
                     // Debug
                     // displayList();
                     return;
                 } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
-                    Link<T> temp;
+                    
                     Link<T> nodoNuevo = new Link<>(dd);
-                    temp = this.recorreLista();
-                    temp.setNext(nodoNuevo);
+                    if(isEmpty()){
+                        first = nodoNuevo;
+                    }else{
+                        Link<T> temp;
+                        temp = this.recorreLista();
+                        temp.setNext(nodoNuevo);
+                    }
+                    
+                    
                     // Debug
                     // displayList();
                     return;
