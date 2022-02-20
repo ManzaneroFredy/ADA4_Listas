@@ -7,7 +7,9 @@ import Model.Movie;
 public class App {
     public static void main(String[] args) throws Exception {
         LinkList<Movie> pelisPro = new LinkList<>();
+        LinkList<String> movie_titles = new LinkList<>();
         Archivo archivoPelis = new Archivo();
+        Movie aaa = new Movie("Omar");
         /*
         LinkList<String> lista = new LinkList<>();
         Link<String> elemento = new Link<String>("Omar");
@@ -61,6 +63,8 @@ public class App {
         pelisPro.deleteFirst();
         System.out.println("depues de borrar " + pelisPro.obtenerPrimerElemento().getdData().getMovie_title());
         System.out.println(pelisPro.obtenerUltimoElemento().getdData().getMovie_title());
+
+        pelisPro.insertAscending(aaa);
         
         pelisPro.displayList();
          

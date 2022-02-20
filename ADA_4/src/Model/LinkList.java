@@ -1,10 +1,8 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
-public class LinkList<T> {
+public class LinkList<T extends Comparable<T>> {
     private Link<T> first;
 
     public LinkList() {
@@ -75,7 +73,8 @@ public class LinkList<T> {
     }
 
     // Método 4: Insertar un elemento antes de uno proporcionado
-    public void insertarAntesDeUnElemento(Link<T> elementoInsertar, T datoABuscar) {
+    public void insertarAntesDeUnElemento(T dd, T datoABuscar) {
+        Link<T> elementoInsertar = new Link<>(dd);
         Link<T> current;
         current = first;
 
@@ -98,7 +97,8 @@ public class LinkList<T> {
     }
 
     // Método 5: insertar un elemento despues de uno proporcionado
-    public void insertarDespuesDeUnElemento(Link<T> elementoInsertar, T datoABuscar) {
+    public void insertarDespuesDeUnElemento(T dd, T datoABuscar) {
+        Link<T> elementoInsertar = new Link<>(dd);
         Link<T> current;
         current = first;
 
@@ -186,7 +186,7 @@ public class LinkList<T> {
         // return false;
     }
 
-    
+ /*
     public void insertarElementoFormaCreciente(T dd){
         Link<T> elemento = new Link<>(dd);
         Link<T> current;
@@ -222,6 +222,44 @@ public class LinkList<T> {
        
     }
     
+*/
+
+
+public void insertAscending(T dd) {
+    Link<T> current = first;
+
+    if (isEmpty()) {
+        insertFirst(dd);
+        // Debug
+        // displayList();
+
+        // System.out.println(first);
+    } else {
+        while (current != null) {
+            if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
+                insertFirst(dd);
+                // Debug
+                // displayList();
+                return;
+            } else if (current.getdData().compareTo(dd) <= 0 && current.getdData() != null
+                    && current.getdData().compareTo(dd) > 0) {
+                this.insertarAntesDeUnElemento(dd, current.getdData());
+                // Debug
+                // displayList();
+                return;
+            } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
+                Link<T> temp;
+                Link<T> nodoNuevo = new Link<>(dd);
+                temp = this.recorreLista();
+                temp.setNext(nodoNuevo);
+                // Debug
+                // displayList();
+                return;
+            }
+            current = current.getNext();
+        }
+    }
+}
 
     // Método 7: Eliminar un elemento proporcionando su dato
     public void eliminarElemento(T datoAEliminar) {

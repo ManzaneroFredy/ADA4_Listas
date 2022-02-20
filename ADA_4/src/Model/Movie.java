@@ -1,7 +1,7 @@
 package Model;
 
 
-public class Movie {
+public class Movie<T extends Comparable<T>> {
     private int id; //1
     private String movie_title; //2
     private int duration; //3
