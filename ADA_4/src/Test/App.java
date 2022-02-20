@@ -30,8 +30,8 @@ public class App {
         list.insertBefore(102.0,2.99);
         list.displayList();
 
-        System.out.println("Insert Last");
-        list.insertAfter(30.0,2.99);
+        System.out.println("Insert After");
+        list.insertAfter(7.99,8.99);
         list.displayList();
 
 
@@ -54,13 +54,53 @@ public class App {
 
 
         System.out.println("Replace element in position");
-        list.replaceWithIndex(8.99,3);
+        list.replaceWithIndex(10.99,2);
+        list.displayList();
+
+        System.out.println("Clean List");
+        list.cleanList();
         list.displayList();
 
 
-        // list.cleanList();
+        System.out.println("Insert Ascending");
+        list.insertAscending(25.0);
+        list.insertAscending(1.0);
+        list.insertAscending(30.0);
+        list.insertAscending(12.0);
+        list.insertAscending(2.0);
+        list.insertAscending(100.0);
+        list.insertAscending(1.0);
+        list.insertAscending(3.0);
+        list.insertAscending(7.0);
+        list.insertAscending(28.0);
+        list.insertAscending(99.0);
+        list.insertAscending(278.0);
+        list.displayList();
 
-        // list.displayList();
+
+
+        System.out.println("Clean List");
+        list.cleanList();
+        list.displayList();
+
+
+        System.out.println("Insert Descending");
+        list.insertDescending(25.0);
+        list.insertDescending(1.0);
+        list.insertDescending(30.0);
+        list.insertDescending(12.0);
+        list.insertDescending(2.0);
+        list.insertDescending(100.0);
+        list.insertDescending(1.0);
+        list.insertDescending(3.0);
+        list.insertDescending(7.0);
+        list.insertDescending(28.0);
+        list.insertDescending(99.0);
+        list.insertDescending(278.0);
+        list.displayList();
+
+
+        
         
         
     }
