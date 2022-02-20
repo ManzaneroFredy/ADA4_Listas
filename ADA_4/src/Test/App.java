@@ -1,5 +1,6 @@
 package Test;
 import Model.DELinkList;
+import Model.Movie;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -99,6 +100,21 @@ public class App {
         list.insertDescending(278.0);
         list.displayList();
 
+
+
+        DELinkList<Movie> listMovies = new DELinkList<Movie>();
+        Movie movie2 = new Movie("Chino la pelicula ");
+        Movie movie3 = new Movie("Aleluya");
+        Movie movie4 = new Movie("Ted");
+        Movie movie5 = new Movie("Amigo ven te invito una copa");
+        Movie movie6 = new Movie("Ted");
+        listMovies.insertAscending(movie2);
+        listMovies.insertAscending(movie3);
+        listMovies.insertAscending(movie4);
+        listMovies.insertAscending(movie5);
+        listMovies.insertAscending(movie6);
+
+        listMovies.displayList();
 
         
         

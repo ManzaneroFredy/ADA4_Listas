@@ -17,7 +17,7 @@ public class DELinkList<E extends Comparable<E>> {
         DELink<E> newLink = new DELink<E>(dd);
         if (isEmpty())
             last = newLink;
-        newLink.next = first;
+        newLink.setNext(first); 
         first = newLink;
     }
 
@@ -26,15 +26,15 @@ public class DELinkList<E extends Comparable<E>> {
         if (isEmpty())
             first = newLink;
         else
-            last.next = newLink;
+            last.setNext(newLink);
         last = newLink;
     }
 
     public E deleteFirst() {
-        E temp = first.dData;
-        if (first.next == null)
+        E temp = first.getdData();
+        if (first.getNext() == null)
             last = null;
-        first = first.next;
+        first = first.getNext();
         return temp;
     }
 
@@ -43,7 +43,7 @@ public class DELinkList<E extends Comparable<E>> {
         DELink<E> current = first;
         while (current != null) {
             current.displayLink();
-            current = current.next;
+            current = current.getNext();
         }
         System.out.println("<--last)");
     }
@@ -60,7 +60,7 @@ public class DELinkList<E extends Comparable<E>> {
         int size = 0;
         DELink<E> current = first;
         while (current != null) {
-            current = current.next;
+            current = current.getNext();
             size++;
         }
 
@@ -71,20 +71,20 @@ public class DELinkList<E extends Comparable<E>> {
         DELink<E> newNode = new DELink<E>(dd);
         DELink<E> current = first;
         // Caso donde el primer elemento es la referencia
-        if (first.dData.compareTo(referencedd) == 0) {
+        if (first.getdData().compareTo(referencedd) == 0) {
             DELink<E> temp = first;
-            newNode.next = temp;
+            newNode.setNext(temp);
             first = newNode;
             return;
         } else {
             while (current != null) {
-                if (current.next.dData.compareTo(referencedd) == 0) {
-                    DELink<E> temp = current.next;
-                    newNode.next = temp;
-                    current.next = newNode;
+                if (current.getNext().getdData().compareTo(referencedd) == 0) {
+                    DELink<E> temp = current.getNext();
+                    newNode.setNext(temp);
+                    current.setNext(newNode);
                     return;
                 }
-                current = current.next;
+                current = current.getNext();
             }
         }
     }
@@ -93,13 +93,13 @@ public class DELinkList<E extends Comparable<E>> {
         DELink<E> newNode = new DELink<E>(dd);
         DELink<E> current = first;
         while (current != null) {
-            if (current.dData.compareTo(referencedd) == 0) {
-                DELink<E> temp = current.next;
-                newNode.next = temp;
-                current.next = newNode;
+            if (current.getdData().compareTo(referencedd) == 0) {
+                DELink<E> temp = current.getNext();
+                newNode.setNext(temp);;
+                current.setNext(newNode); ;
                 return;
             }
-            current = current.next;
+            current = current.getNext();
         }
     }
 
@@ -114,24 +114,25 @@ public class DELinkList<E extends Comparable<E>> {
             // System.out.println(first);
         } else {
             while (current != null) {
-                if (current.dData.compareTo(dd) >= 0 && current.next == null) {
+                //Se elimino el mayor o igual que.
+                if (current.getdData().compareTo(dd) > 0 && current.getNext() == null) {
                     insertFirst(dd);
                     // Debug
                     // displayList();
                     return;
-                } else if (current.dData.compareTo(dd) <= 0 && current.next != null
-                        && current.next.dData.compareTo(dd) > 0) {
-                    insertAfter(dd, current.dData);
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() != null
+                        && current.getNext().getdData().compareTo(dd) > 0) {
+                    insertAfter(dd, current.getdData());
                     // Debug
                     // displayList();
                     return;
-                } else if (current.dData.compareTo(dd) <= 0 && current.next == null) {
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext()== null) {
                     insertLast(dd);
                     // Debug
                     // displayList();
                     return;
                 }
-                current = current.next;
+                current = current.getNext();
             }
         }
     }
@@ -147,41 +148,41 @@ public class DELinkList<E extends Comparable<E>> {
             // System.out.println(first);
         } else {
             while (current != null) {
-                if (current.dData.compareTo(dd) >= 0 && current.next == null) {
+                if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
                     insertLast(dd);
 
                     // Debug
                     // displayList();
                     return;
-                } else if (current.dData.compareTo(dd) >= 0 && current.next != null
-                        && current.next.dData.compareTo(dd) < 0) {
-                    insertAfter(dd, current.dData);
+                } else if (current.getdData().compareTo(dd) >= 0 && current.getNext() != null
+                        && current.getNext().getdData().compareTo(dd) < 0) {
+                    insertAfter(dd, current.getdData());
                     // Debug
                     // displayList();
                     return;
-                } else if (current.dData.compareTo(dd) <= 0 && current.next == null) {
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
                     insertFirst(dd);
                     // Debug
                     // displayList();
                     return;
                 }
-                current = current.next;
+                current = current.getNext();
             }
         }
     }
 
     public void deleteEspecificElement(E dd) {
         DELink<E> current = first;
-        if (first.dData.compareTo(dd) == 0) {
-            first = first.next;
+        if (first.getdData().compareTo(dd) == 0) {
+            first = first.getNext();
         } else {
             while (current != null) {
-                if (current.next.dData.compareTo(dd) == 0) {
-                    DELink<E> temp = current.next.next;
-                    current.next = temp;
+                if (current.getNext().getdData().compareTo(dd) == 0) {
+                    DELink<E> temp = current.getNext().getNext();
+                    current.setNext(temp);;
                     return;
                 }
-                current = current.next;
+                current = current.getNext();
             }
         }
 
@@ -192,10 +193,10 @@ public class DELinkList<E extends Comparable<E>> {
         DELink<E> current = first;
         while (current != null) {
             if (position == i) {
-                deleteEspecificElement(current.dData);
+                deleteEspecificElement(current.getdData());
             }
             i++;
-            current = current.next;
+            current = current.getNext();
         }
     }
 
@@ -208,11 +209,11 @@ public class DELinkList<E extends Comparable<E>> {
         int i = 1;
         DELink<E> current = first;
         while (current != null) {
-            if (current.dData.compareTo(dd) == 0) {
+            if (current.getdData().compareTo(dd) == 0) {
                 return i;
             }
             i++;
-            current = current.next;
+            current = current.getNext();
         }
         return -1;
     }
@@ -222,11 +223,11 @@ public class DELinkList<E extends Comparable<E>> {
         DELink<E> current = first;
         while (current != null) {
             if (position == i) {
-                current.dData = dd;
+                current.setdData(dd) ;
                 return;
             }
             i++;
-            current = current.next;
+            current = current.getNext();
         }
     }
 
