@@ -19,7 +19,6 @@ public class Archivo{
                 linea = lectorDocumento.readLine();
             }
             String[] datosArchivo = linea.split(SEPARADOR);
-            datosArchivo[0] = datosArchivo[0].replace("?1", "1");
             return new Movie(Integer.parseInt(datosArchivo[0]), datosArchivo[1],Integer.parseInt(datosArchivo[2]), datosArchivo[3], datosArchivo[4], datosArchivo[5], datosArchivo[6],Long.parseLong(datosArchivo[7]),Integer.parseInt(datosArchivo[8]), Double.parseDouble(datosArchivo[9]) ,Double.parseDouble(datosArchivo[9]), datosArchivo[11]);
         } catch (Exception ex) {
             System.out.println("problema detectado " + ex);
@@ -29,7 +28,7 @@ public class Archivo{
             }
 
         }
-        return new Movie("omar");
+        return new Movie("NODATA");
     }
 
   
