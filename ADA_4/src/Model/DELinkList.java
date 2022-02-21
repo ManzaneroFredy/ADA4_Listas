@@ -15,7 +15,8 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @return boolean
+     * Verifica si la lista se encuentra vacia
+     * @return boolean 
      */
     public boolean isEmpty() {
         return (first == null);
@@ -23,6 +24,7 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
+     * Inserta un elemento al principio de la lista
      * @param dd
      */
     public void insertFirst(E dd) {
@@ -35,6 +37,7 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
+     * Inserta un elemento al final de la lista
      * @param dd
      */
     public void insertLast(E dd) {
@@ -48,6 +51,7 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
+     * Borra un elemento al principio de la lista
      * @return E
      */
     public E deleteFirst() {
@@ -58,6 +62,9 @@ public class DELinkList<E extends Comparable<E>> {
         return temp;
     }
 
+    /** 
+     * Muestra la lista comenzando con el primer elemento
+     */
     public void displayList() {
         System.out.print("List (first--> ");
         DELink<E> current = first;
@@ -70,6 +77,7 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
+     * Devuelve el primer elemento de la lista
      * @return DELink<E>
      */
     public DELink<E> getFirts() {
@@ -78,6 +86,7 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
+     * Devuelve el ultimo elemento de la lista
      * @return DELink<E>
      */
     public DELink<E> getLast() {
@@ -86,6 +95,7 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
+     * Devuelve el tamano actual de la lista
      * @return int
      */
     public int getSize() {
@@ -101,8 +111,9 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param dd
-     * @param referencedd
+     * Inserta un elemento antes de un elemento de referencia
+     * @param dd Elemento a insertar
+     * @param referencedd Elemento de referencia
      */
     public void insertBefore(E dd, E referencedd) {
         DELink<E> newNode = new DELink<E>(dd);
@@ -128,8 +139,9 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param dd
-     * @param referencedd
+     * Inserta un elemento despues de un elemento de referencia
+     * @param dd Elemento a insertar
+     * @param referencedd Elemento de referencia
      */
     public void insertAfter(E dd, E referencedd) {
         DELink<E> newNode = new DELink<E>(dd);
@@ -147,7 +159,8 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param dd
+     * Inserta un elemento de forma ascendente, comparando con los elementos actuales de la lista
+     * @param dd Elemento a insertar
      */
     public void insertAscending(E dd) {
         DELink<E> current = first;
@@ -185,7 +198,8 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param dd
+     * Inserta un elemento de forma Descendente, comparando con los elementos actuales de la lista
+     * @param dd Elemento a insertar
      */
     public void insertDescending(E dd) {
         DELink<E> current = first;
@@ -223,7 +237,8 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param dd
+     * Elimina un elemento de acuerdo al dato enviado
+     * @param dd Dato para buscar el elemento
      */
     public void deleteEspecificElement(E dd) {
         DELink<E> current = first;
@@ -244,7 +259,8 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param position
+     * Elimina un elemento en la posicion indicada
+     * @param position Posicion del elemento en la lista
      */
     public void deleteWithIndex(int position) {
         int i = 1;
@@ -265,8 +281,9 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param dd
-     * @return int
+     * Metodo para buscar elementos en la lista, mediante su dato. Si el elemento es encontrado se retorna la posicion del mismo, de lo contrario se retorna -1
+     * @param dd Dato a buscar en la lista
+     * @return int -1 Indica que el elemento no fue encontrado,  Cualquier otro numero indica la posicion del elemento
      */
     public int searchElement(E dd) {
         int i = 1;
@@ -283,8 +300,9 @@ public class DELinkList<E extends Comparable<E>> {
 
     
     /** 
-     * @param dd
-     * @param position
+     * Reeemplazar un elemento dependiendo de la posicion indicada
+     * @param dd Elemento a insertar
+     * @param position Posicion de elemento
      */
     public void replaceWithIndex(E dd, int position) {
         int i = 1;
