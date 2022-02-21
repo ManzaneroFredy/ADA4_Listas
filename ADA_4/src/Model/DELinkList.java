@@ -1,5 +1,9 @@
 package Model;
-
+    /**
+    *  Genera una lista ligada con doble final.
+    * 
+    * @param <E> the type of the elements of the DELinkList.
+    */
 public class DELinkList<E extends Comparable<E>> {
     private DELink<E> first;
     private DELink<E> last;
@@ -9,10 +13,18 @@ public class DELinkList<E extends Comparable<E>> {
         last = null;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty() {
         return (first == null);
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void insertFirst(E dd) {
         DELink<E> newLink = new DELink<E>(dd);
         if (isEmpty())
@@ -21,6 +33,10 @@ public class DELinkList<E extends Comparable<E>> {
         first = newLink;
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void insertLast(E dd) {
         DELink<E> newLink = new DELink<E>(dd);
         if (isEmpty())
@@ -30,6 +46,10 @@ public class DELinkList<E extends Comparable<E>> {
         last = newLink;
     }
 
+    
+    /** 
+     * @return E
+     */
     public E deleteFirst() {
         E temp = first.getdData();
         if (first.getNext() == null)
@@ -48,14 +68,26 @@ public class DELinkList<E extends Comparable<E>> {
         System.out.println("<--last)");
     }
 
+    
+    /** 
+     * @return DELink<E>
+     */
     public DELink<E> getFirts() {
         return first;
     }
 
+    
+    /** 
+     * @return DELink<E>
+     */
     public DELink<E> getLast() {
         return last;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getSize() {
         int size = 0;
         DELink<E> current = first;
@@ -67,6 +99,11 @@ public class DELinkList<E extends Comparable<E>> {
         return size;
     }
 
+    
+    /** 
+     * @param dd
+     * @param referencedd
+     */
     public void insertBefore(E dd, E referencedd) {
         DELink<E> newNode = new DELink<E>(dd);
         DELink<E> current = first;
@@ -89,6 +126,11 @@ public class DELinkList<E extends Comparable<E>> {
         }
     }
 
+    
+    /** 
+     * @param dd
+     * @param referencedd
+     */
     public void insertAfter(E dd, E referencedd) {
         DELink<E> newNode = new DELink<E>(dd);
         DELink<E> current = first;
@@ -103,6 +145,10 @@ public class DELinkList<E extends Comparable<E>> {
         }
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void insertAscending(E dd) {
         DELink<E> current = first;
 
@@ -137,6 +183,10 @@ public class DELinkList<E extends Comparable<E>> {
         }
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void insertDescending(E dd) {
         DELink<E> current = first;
 
@@ -171,6 +221,10 @@ public class DELinkList<E extends Comparable<E>> {
         }
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void deleteEspecificElement(E dd) {
         DELink<E> current = first;
         if (first.getdData().compareTo(dd) == 0) {
@@ -188,6 +242,10 @@ public class DELinkList<E extends Comparable<E>> {
 
     }
 
+    
+    /** 
+     * @param position
+     */
     public void deleteWithIndex(int position) {
         int i = 1;
         DELink<E> current = first;
@@ -205,6 +263,11 @@ public class DELinkList<E extends Comparable<E>> {
         last = null;
     }
 
+    
+    /** 
+     * @param dd
+     * @return int
+     */
     public int searchElement(E dd) {
         int i = 1;
         DELink<E> current = first;
@@ -218,6 +281,11 @@ public class DELinkList<E extends Comparable<E>> {
         return -1;
     }
 
+    
+    /** 
+     * @param dd
+     * @param position
+     */
     public void replaceWithIndex(E dd, int position) {
         int i = 1;
         DELink<E> current = first;

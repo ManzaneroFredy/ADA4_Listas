@@ -11,7 +11,7 @@ public class Archive {
 
     public Movie readMovie(int lines) throws Exception {
         try {
-            this.documentReader = new BufferedReader(new FileReader(RUTA_ARCHIVO));
+            this.documentReader = new BufferedReader(new FileReader(RUTA_ARCHIVO,StandardCharsets.UTF_8));
             String line = "";
             line = documentReader.readLine();
             for(int i = 0; i < lines + 1; i++){
