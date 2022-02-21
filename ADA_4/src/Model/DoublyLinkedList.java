@@ -1,5 +1,7 @@
 package Model;
 
+
+
 public class DoublyLinkedList<E extends Comparable<E>> {
     private DoublyLink<E> first;
     private DoublyLink<E> last;
@@ -9,49 +11,59 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         last = null;
     }
 
-    
-    /** 
+    /**
      * Comprueba si la lista está vacía
+     * 
      * @return boolean
      */
     public boolean isEmpty() {
         return first == null;
     }
 
-    
-    /** 
+    /**
      * Inserta un elemento al inicio de la lista
+     * 
      * @param dd
      */
     public void insertFirst(E dd) {
-        DoublyLink<E> newLink = new DoublyLink<E>(dd);
-        if (isEmpty())
-            last = newLink;
-        else
-            first.setPrevious(newLink);
-        newLink.setNext(first);
-        first = newLink;
+        try {
+            DoublyLink<E> newLink = new DoublyLink<E>(dd);
+            if (isEmpty())
+                last = newLink;
+            else
+                first.setPrevious(newLink);
+            newLink.setNext(first);
+            first = newLink;
+        } catch (Exception ex) {
+            System.out.println("Error detectado: " + ex);
+        }
+
     }
 
-    
-    /** 
+    /**
      * Inserta un elemento al final de la lista
+     * 
      * @param dd
      */
     public void insertLast(E dd) {
-        DoublyLink<E> newLink = new DoublyLink<E>(dd);
-        if (isEmpty())
-            first = newLink;
-        else {
-            last.setNext(newLink);
-            newLink.setPrevious(last);
+        try {
+            DoublyLink<E> newLink = new DoublyLink<E>(dd);
+            if (isEmpty())
+                first = newLink;
+            else {
+                last.setNext(newLink);
+                newLink.setPrevious(last);
+            }
+            last = newLink;
+        } catch (Exception ex) {
+            System.out.println("Error detectado: " + ex);
         }
-        last = newLink;
+
     }
 
-    
-    /** 
+    /**
      * Elimina el primer elemento de la lista
+     * 
      * @return DoublyLink<E>
      */
     public DoublyLink<E> deleteFirst() {
@@ -64,9 +76,9 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return temp;
     }
 
-    
-    /** 
+    /**
      * Elimina el último elemento de la lista
+     * 
      * @return DoublyLink<E>
      */
     public DoublyLink<E> deleteLast() {
@@ -79,9 +91,9 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return temp;
     }
 
-    
-    /** 
+    /**
      * Inserta un elemento despues de otro elemento
+     * 
      * @param key
      * @param dd
      * @return boolean
@@ -106,9 +118,9 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return true;
     }
 
-    
-    /** 
+    /**
      * Inserta un elemento antes de otro elemento
+     * 
      * @param key
      * @param dd
      * @return boolean
@@ -134,9 +146,9 @@ public class DoublyLinkedList<E extends Comparable<E>> {
 
     }
 
-    
-    /** 
+    /**
      * Elimina un elemento en específico
+     * 
      * @param key
      * @return DoublyLink<E>
      */
@@ -158,7 +170,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return current;
     }
 
-    /** 
+    /**
      * Imprime la lista desde el primero hasta el ùltimo
      * 
      */
@@ -172,7 +184,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
-    /** 
+    /**
      * Imprime la lista desde el ùltimo hasta el primero
      * 
      */
@@ -186,7 +198,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
-    /** 
+    /**
      * Imprime el primer elemento de la lista
      * 
      */
@@ -197,7 +209,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
-    /** 
+    /**
      * Imprime el ùltimo elemento de la lista
      * 
      */
@@ -208,7 +220,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
-    /** 
+    /**
      * Imprime el tamaño de la lista
      * 
      */
@@ -222,100 +234,114 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("tamaño de la lista: " + count);
     }
 
-    
-    /** 
+    /**
      * Elimina un elemento de la lista en base a su posición
+     * 
      * @param position
      */
     public void deletePosition(int position) {
-        DoublyLink<E> current = first;
-        int listPosition = 1;
-        while (listPosition != position) {
-            current = current.getNext();
-            listPosition++;
 
-        }
-        if (current == first) {
-
-            first = current.getNext();
-        } else {
-
-            current.getPrevious().setNext(current.getNext());
-        }
-        if (current == last) {
-
-            last = current.getPrevious();
-        } else {
-
-            current.getNext().setPrevious(current.getPrevious());
-        }
-
-    }
-    
-    /** 
-     * Elimina todos los elementos de la lista
-     * 
-     */
-    public void cleanList() {
-        DoublyLink<E> current = first;
-
-        while (current != null) {
-            if (current == first) {
-                first = current.getNext();
-
-            } else {
-                current.getPrevious().setNext(current.getNext());
+        try {
+            DoublyLink<E> current = first;
+            int listPosition = 1;
+            while (listPosition != position) {
+                current = current.getNext();
+                listPosition++;
 
             }
-            if (current == last) {
-                last = current.getPrevious();
+            if (current == first) {
 
+                first = current.getNext();
+            } else {
+
+                current.getPrevious().setNext(current.getNext());
+            }
+            if (current == last) {
+
+                last = current.getPrevious();
             } else {
 
                 current.getNext().setPrevious(current.getPrevious());
             }
-            current = current.getNext();
-
+        } catch (Exception ex) {
+            System.out.println("Error encontrado: " + ex);
         }
-        System.out.println("Lista limpiada correctamente");
 
     }
 
-    
-    /** 
-     * Busca un elemento de la lista y retorna su posición si es encontrado, si no, retorna -1
+    /**
+     * Elimina todos los elementos de la lista
+     * 
+     */
+    public void cleanList() {
+        try {
+            DoublyLink<E> current = first;
+
+            while (current != null) {
+                if (current == first) {
+                    first = current.getNext();
+
+                } else {
+                    current.getPrevious().setNext(current.getNext());
+
+                }
+                if (current == last) {
+                    last = current.getPrevious();
+
+                } else {
+
+                    current.getNext().setPrevious(current.getPrevious());
+                }
+                current = current.getNext();
+
+            }
+            System.out.println("Lista limpiada correctamente");
+        } catch (Exception ex) {
+            System.out.println("Error encontrado en: " + ex);
+        }
+
+    }
+
+    /**
+     * Busca un elemento de la lista y retorna su posición si es encontrado, si no,
+     * retorna -1
+     * 
      * @param element
      */
     public void searchElement(E element) {
-        DoublyLink<E> current = first;
-        E elementList;
-        int count = 1;
-        Boolean comprobador = false;
-        while (current != null) {
-            elementList = current.getdData();
+        try {
+            DoublyLink<E> current = first;
+            E elementList;
+            int count = 1;
+            Boolean comprobador = false;
+            while (current != null) {
+                elementList = current.getdData();
 
-            if (elementList == element) {
-                comprobador = true;
-                break;
-            } else {
+                if (elementList == element) {
+                    comprobador = true;
+                    break;
+                } else {
 
-                current = current.getNext();
-                count++;
+                    current = current.getNext();
+                    count++;
+
+                }
 
             }
-
-        }
-        if (comprobador) {
-            System.out.println("Elemento encontrado en la posición: " + count);
-        } else {
-            System.out.println("Elemento no encontrado: -1");
+            if (comprobador) {
+                System.out.println("Elemento encontrado en la posición: " + count);
+            } else {
+                System.out.println("Elemento no encontrado: -1");
+            }
+        } catch (Exception ex) {
+            System.out.println("Error encontrado: " + ex);
         }
 
     }
 
-    
-    /** 
+    /**
      * Inserta un elemento de forma ascendente
+     * 
      * @param dd
      */
     public void insertAscending(E dd) {
@@ -354,9 +380,9 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         }
     }
 
-    
-    /** 
+    /**
      * Inserta un elemento de manera decendiente
+     * 
      * @param dd
      */
     public void insertDescending(E dd) {
