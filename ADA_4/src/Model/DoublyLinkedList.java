@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 public class DoublyLinkedList<E extends Comparable<E>> {
     private DoublyLink<E> first;
@@ -18,8 +18,8 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         if (isEmpty())
             last = newLink;
         else
-            first.previous = newLink;
-        newLink.next = first;
+            first.setPrevious(newLink);
+        newLink.setNext(first);
         first = newLink;
     }
 
@@ -28,69 +28,69 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         if (isEmpty())
             first = newLink;
         else {
-            last.next = newLink;
-            newLink.previous = last;
+            last.setNext(newLink);
+            newLink.setPrevious(last);
         }
         last = newLink;
     }
 
     public DoublyLink<E> deleteFirst() {
         DoublyLink<E> temp = first;
-        if (first.next == null)
+        if (first.getNext() == null)
             last = null;
         else
-            first.next.previous = null;
-        first = first.next;
+            first.getNext().setPrevious(null);
+        first = first.getNext();
         return temp;
     }
 
     public DoublyLink<E> deleteLast() {
         DoublyLink<E> temp = last;
-        if (first.next == null)
+        if (first.getNext() == null)
             first = null;
         else
-            last.previous.next = null;
-        last = last.previous;
+            last.getPrevious().setNext(null);
+        last = last.getPrevious();
         return temp;
     }
 
     public boolean insertAfter(E key, E dd) {
         DoublyLink<E> current = first;
         while (current.getdData() != key) {
-            current = current.next;
+            current = current.getNext();
             if (current == null)
                 return false;
         }
         DoublyLink<E> newLink = new DoublyLink<E>(dd);
         if (current == last) {
-            newLink.next = null;
+            newLink.setNext(null);
             last = newLink;
         } else {
-            newLink.next = current.next;
-            current.next.previous = newLink;
+            newLink.setNext(current.getNext());
+            current.getNext().setPrevious(newLink);
         }
-        newLink.previous = current;
-        current.next = newLink;
+        newLink.setPrevious(current);
+        current.setNext(newLink);
         return true;
     }
 
     public boolean insertBefore(E key, E dd) {
         DoublyLink<E> current = first;
         while (current.getdData() != key) {
-            current = current.next;
+            current = current.getNext();
             if (current == null)
                 return false;
         }
         DoublyLink<E> newLink = new DoublyLink<E>(dd);
         if (current == first) {
-            newLink.previous = null;
+            newLink.setPrevious(null);
             first = newLink;
         } else {
-            newLink.previous = current.previous;
-            current.previous.next = newLink;
+            newLink.setPrevious(current.getPrevious());
+            current.getPrevious().setNext(newLink);
         }
-        newLink.next = current;
-        current.previous = newLink;
+        newLink.setNext(current);
+        current.setPrevious(newLink);
         return true;
 
     }
@@ -98,18 +98,18 @@ public class DoublyLinkedList<E extends Comparable<E>> {
     public DoublyLink<E> deleteKey(E key) {
         DoublyLink<E> current = first;
         while ((current.getdData()) != key) {
-            current = current.next;
+            current = current.getNext();
             if (current == null)
                 return null;
         }
         if (current == first)
-            first = current.next;
+            first = current.getNext();
         else
-            current.previous.next = current.next;
+            current.getPrevious().setNext(current.getNext());
         if (current == last)
-            last = current.previous;
+            last = current.getPrevious();
         else
-            current.next.previous = current.previous;
+            current.getNext().setPrevious(current.getPrevious());
         return current;
     }
 
@@ -118,7 +118,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         DoublyLink<E> current = first;
         while (current != null) {
             current.displayLink();
-            current = current.next;
+            current = current.getNext();
         }
         System.out.println("");
     }
@@ -128,7 +128,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         DoublyLink<E> current = last;
         while (current != null) {
             current.displayLink();
-            current = current.previous;
+            current = current.getPrevious();
         }
         System.out.println("");
     }
@@ -151,7 +151,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         DoublyLink<E> current = first;
         int count = 0;
         while (current != null) {
-            current = current.next;
+            current = current.getNext();
             count++;
         }
         System.out.println("tamaño de la lista: " + count);
@@ -161,23 +161,23 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         DoublyLink<E> current = first;
         int listPosition = 1;
         while (listPosition != position) {
-            current = current.next;
+            current = current.getNext();
             listPosition++;
 
         }
         if (current == first) {
 
-            first = current.next;
+            first = current.getNext();
         } else {
 
-            current.previous.next = current.next;
+            current.getPrevious().setNext(current.getNext());
         }
         if (current == last) {
 
-            last = current.previous;
+            last = current.getPrevious();
         } else {
 
-            current.next.previous = current.previous;
+            current.getNext().setPrevious(current.getPrevious());
         }
 
     }
@@ -187,20 +187,20 @@ public class DoublyLinkedList<E extends Comparable<E>> {
 
         while (current != null) {
             if (current == first) {
-                first = current.next;
+                first = current.getNext();
 
             } else {
-                current.previous.next = current.next;
+                current.getPrevious().setNext(current.getNext());
 
             }
             if (current == last) {
-                last = current.previous;
+                last = current.getPrevious();
 
             } else {
 
-                current.next.previous = current.previous;
+                current.getNext().setPrevious(current.getPrevious());
             }
-            current = current.next;
+            current = current.getNext();
 
         }
         System.out.println("Lista limpiada correctamente");
@@ -220,7 +220,7 @@ public class DoublyLinkedList<E extends Comparable<E>> {
                 break;
             } else {
 
-                current = current.next;
+                current = current.getNext();
                 count++;
 
             }
@@ -246,26 +246,26 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         } else {
             while (current != null) {
 
-                if (current.getdData().compareTo(dd) > 0 && current.next == null) {
+                if (current.getdData().compareTo(dd) > 0 && current.getNext() == null) {
 
                     insertFirst(dd);
                     // Debug
                     // displayForward();
                     return;
-                } else if (current.getdData().compareTo(dd) <= 0 && current.next != null
-                        && current.next.getdData().compareTo(dd) > 0) {
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() != null
+                        && current.getNext().getdData().compareTo(dd) > 0) {
                     ;
                     insertAfter(current.getdData(), dd);
                     // Debug
                     // displayForward();
                     return;
-                } else if (current.getdData().compareTo(dd) <= 0 && current.next == null) {
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
                     insertLast(dd);
                     // Debug
                     // displayForward();
                     return;
                 }
-                current = current.next;
+                current = current.getNext();
             }
         }
     }
@@ -281,25 +281,25 @@ public class DoublyLinkedList<E extends Comparable<E>> {
             // System.out.println(first);
         } else {
             while (current != null) {
-                if (current.getdData().compareTo(dd) >= 0 && current.next == null) {
+                if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
                     insertLast(dd);
 
                     // Debug
                     // displayList();
                     return;
-                } else if (current.getdData().compareTo(dd) >= 0 && current.next != null
-                        && current.next.getdData().compareTo(dd) < 0) {
+                } else if (current.getdData().compareTo(dd) >= 0 && current.getNext() != null
+                        && current.getNext().getdData().compareTo(dd) < 0) {
                     insertAfter(current.getdData(), dd);
                     // Debug
                     // displayList();
                     return;
-                } else if (current.getdData().compareTo(dd) <= 0 && current.next == null) {
+                } else if (current.getdData().compareTo(dd) <= 0 && current.getNext() == null) {
                     insertFirst(dd);
                     // Debug
                     // displayList();
                     return;
                 }
-                current = current.next;
+                current = current.getNext();
             }
         }
     }

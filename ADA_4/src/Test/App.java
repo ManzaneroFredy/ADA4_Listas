@@ -1,6 +1,6 @@
-package test;
+package Test;
 
-import model.DoublyLinkedList;
+import Model.DoublyLinkedList;
 
 public class App {
     public static <E> void main(String[] args) throws Exception {
