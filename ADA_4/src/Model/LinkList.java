@@ -171,16 +171,22 @@ public class LinkList<T extends Comparable<T>> {
             // System.out.println(first);
         } else {
             while (current != null) {
-                if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
-                    Link<T> temp = this.recorreLista();
-                    temp.setNext(new Link<T>(dd));
+                if (current.getdData().compareTo(dd) > 0 && current.getNext() == null) {
+                    Link<T> nodoNuevo = new Link<>(dd);
+                    if(isEmpty()){
+                        first = nodoNuevo;
+                    }else{
+                        Link<T> temp;
+                        temp = this.recorreLista();
+                        temp.setNext(nodoNuevo);
+                    }
 
                     // Debug
                     // displayList();
                     return;
                 } else if (current.getdData().compareTo(dd) >= 0 && current.getNext() != null
                         && current.getNext().getdData().compareTo(dd) < 0) {
-                            this.insertarAntesDeUnElemento(dd, current.getdData());
+                        insertarDespuesDeUnElemento(dd, current.getdData());
                     // Debug
                     // displayList();
                     return;
