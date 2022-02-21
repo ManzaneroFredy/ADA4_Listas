@@ -102,10 +102,14 @@ public class App {
         list.displayList();
 
 
-
-        Archive moviesFile = new Archive();
-        moviesFile.readFile(10);
         DELinkList<Movie> listMovies = new DELinkList<Movie>();
+        Archive moviesFile = new Archive();
+        for(int i = 0; i< 10; i++){
+            listMovies.insertDescending(moviesFile.readMovie(i));
+        }
+        
+
+
         // Movie movie1 = new Movie("Marcianito 2");
         // Movie movie2 = new Movie("Chino la pelicula ");
         // Movie movie3 = new Movie("Aleluya");
@@ -113,12 +117,12 @@ public class App {
         // Movie movie5 = new Movie("Amigo ven te invito una copa");
         // Movie movie6 = new Movie("Ted 1");
 
-        // listMovies.insertAscending(movie1);
-        // listMovies.insertAscending(movie2);
-        // listMovies.insertAscending(movie3);
-        // listMovies.insertAscending(movie4);
-        // listMovies.insertAscending(movie5);
-        // listMovies.insertAscending(movie6);
+        // listMovies.insertDescending(movie1);
+        // listMovies.insertDescending(movie2);
+        // listMovies.insertDescending(movie3);
+        // listMovies.insertDescending(movie4);
+        // listMovies.insertDescending(movie5);
+        // listMovies.insertDescending(movie6);
         
 
         listMovies.displayList();

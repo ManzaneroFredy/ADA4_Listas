@@ -148,7 +148,7 @@ public class DELinkList<E extends Comparable<E>> {
             // System.out.println(first);
         } else {
             while (current != null) {
-                if (current.getdData().compareTo(dd) >= 0 && current.getNext() == null) {
+                if (current.getdData().compareTo(dd) > 0 && current.getNext() == null) {
                     insertLast(dd);
 
                     // Debug

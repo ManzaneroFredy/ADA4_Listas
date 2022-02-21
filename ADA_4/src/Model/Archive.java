@@ -2,14 +2,14 @@ package Model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-//import java.nio.charset.StandardCharsets;
+import java.nio.charset.StandardCharsets;
 
 public class Archive {
-    private String RUTA_ARCHIVO = "src/Docs/Movie.csv";
+    private String RUTA_ARCHIVO = "ADA_4/src/Docs/Movie.csv";
     private final static String SEPARATOR = ",";
     private BufferedReader documentReader = null;
 
-    public Movie readFile(int lines) throws Exception {
+    public Movie readMovie(int lines) throws Exception {
         try {
             this.documentReader = new BufferedReader(new FileReader(RUTA_ARCHIVO));
             String line = "";
@@ -35,11 +35,12 @@ public class Archive {
             return movie;
         } catch (Exception ex) {
             System.out.println("problema detectado " + ex);
+            return new Movie("No DATA");
         } finally {
             if (null != documentReader) {
                 documentReader.close();
             }
         }
-        return new Movie("omar");
+        
     }
 }
