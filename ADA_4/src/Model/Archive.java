@@ -1,11 +1,13 @@
 package Model;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 public class Archive {
-    private String RUTA_ARCHIVO = "ADA_4/src/Docs/Movie.csv";
+    private String RUTA_ARCHIVO = "src/Docs/Movie.csv";
     private final static String SEPARATOR = ",";
     private BufferedReader documentReader = null;
 
@@ -14,11 +16,12 @@ public class Archive {
             this.documentReader = new BufferedReader(new FileReader(RUTA_ARCHIVO,StandardCharsets.UTF_8));
             String line = "";
             line = documentReader.readLine();
-            for(int i = 0; i < lines + 1; i++){
+            line = documentReader.readLine();
+            for(int i = 0; i < lines -1 ; i++){
                 line = documentReader.readLine();
             }
             String[] fileData = line.split(SEPARATOR);
-            //fileData[0] = fileData[0].replace("?1", "1");
+            fileData[0] = fileData[0].replace("?1", "1");
             Movie movie = new Movie();
             movie.setId(fileData[0] != "" ? Integer.parseInt(fileData[0]): 0 );
             movie.setMovie_title(fileData[1] != "" ? fileData[1] : "No Title");
@@ -42,5 +45,22 @@ public class Archive {
             }
         }
         
+    }
+
+
+    public void generarArchivoSalida(DELink<Movie> listaMovie) throws Exception{
+        FileOutputStream archivoCsv = new FileOutputStream("src/Docs/MovieFinal.csv");
+        OutputStreamWriter salida = new OutputStreamWriter(archivoCsv, "UTF-8");
+        DELink<Movie> temp = listaMovie;
+
+        while(temp.getNext() != null){
+            salida.write(temp.getdData().getId() + ", " + temp.getdData().getMovie_title() + ", " + temp.getdData().getDuration()+ ", " + temp.getdData().getColor()+ ", " + temp.getdData().getLanguage()
+            + ", " + temp.getdData().getCountry()+ ", " + temp.getdData().getContent_rating()+ ", " + temp.getdData().getBudget()+ ", " + temp.getdData().getYear()+ ", " + temp.getdData().getImdb_score()
+            + ", " + temp.getdData().getAspect_ratio()+ ", " + temp.getdData().getMovie_imdb_link() + "\n");
+            temp = temp.getNext();
+        }
+        
+        
+        salida.close();
     }
 }

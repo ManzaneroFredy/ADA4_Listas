@@ -5,11 +5,28 @@ import Model.Movie;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        DELinkList<Double> list = new DELinkList<Double>(); 
-        list.insertFirst(2.99);
-        list.insertFirst(4.99);
-        list.insertFirst(6.99);
-        list.insertFirst(8.99);
+       
+
+
+        DELinkList<Movie> list = new DELinkList<Movie>();
+        Archive moviesFile = new Archive();
+        
+        Movie movie1 = moviesFile.readMovie(30);
+        Movie movie2 = moviesFile.readMovie(38);
+        Movie movie3 = moviesFile.readMovie(44);
+        Movie movie4 = moviesFile.readMovie(77);
+        Movie movie5 = moviesFile.readMovie(123);
+        Movie movie6 = moviesFile.readMovie(22);
+        Movie movie7 = moviesFile.readMovie(66);
+        Movie movie8 = moviesFile.readMovie(99);
+        Movie movie9 = moviesFile.readMovie(100);
+
+
+
+        list.insertFirst(movie1);
+        list.insertFirst(movie2);
+        list.insertFirst(movie3);
+        list.insertFirst(movie4);
         //list.displayList(); 
         
         //list.deleteFirst();
@@ -29,16 +46,16 @@ public class App {
         System.out.println("");
 
         System.out.println("Insert Before");
-        list.insertBefore(102.0,2.99);
+        list.insertBefore(movie5,movie2);
         list.displayList();
 
         System.out.println("Insert After");
-        list.insertAfter(7.99,8.99);
+        list.insertAfter(movie6,movie1);
         list.displayList();
 
 
         System.out.println("Delete Especific Element");
-        list.deleteEspecificElement(102.0);
+        list.deleteEspecificElement(movie2);
         list.displayList();
 
         System.out.println("Delete with Index");
@@ -46,7 +63,7 @@ public class App {
         list.displayList();
 
         System.out.println("Search Element and position");
-        int searchValue = list.searchElement(4.99);
+        int searchValue = list.searchElement(movie4);
         if(searchValue == -1){
             System.out.println("Element not found: " + searchValue);
         }else{
@@ -56,7 +73,7 @@ public class App {
 
 
         System.out.println("Replace element in position");
-        list.replaceWithIndex(10.99,2);
+        list.replaceWithIndex(movie7,2);
         list.displayList();
 
         System.out.println("Clean List");
@@ -65,18 +82,9 @@ public class App {
 
 
         System.out.println("Insert Ascending");
-        list.insertAscending(25.0);
-        list.insertAscending(1.0);
-        list.insertAscending(30.0);
-        list.insertAscending(12.0);
-        list.insertAscending(2.0);
-        list.insertAscending(100.0);
-        list.insertAscending(1.0);
-        list.insertAscending(3.0);
-        list.insertAscending(7.0);
-        list.insertAscending(28.0);
-        list.insertAscending(99.0);
-        list.insertAscending(278.0);
+        for(int i = 1; i< 10; i++){
+            list.insertAscending(moviesFile.readMovie(i));
+        }
         list.displayList();
 
 
@@ -87,45 +95,14 @@ public class App {
 
 
         System.out.println("Insert Descending");
-        list.insertDescending(25.0);
-        list.insertDescending(1.0);
-        list.insertDescending(30.0);
-        list.insertDescending(12.0);
-        list.insertDescending(2.0);
-        list.insertDescending(100.0);
-        list.insertDescending(1.0);
-        list.insertDescending(3.0);
-        list.insertDescending(7.0);
-        list.insertDescending(28.0);
-        list.insertDescending(99.0);
-        list.insertDescending(278.0);
-        list.displayList();
-
-
-        DELinkList<Movie> listMovies = new DELinkList<Movie>();
-        Archive moviesFile = new Archive();
-        for(int i = 0; i< 10; i++){
-            listMovies.insertDescending(moviesFile.readMovie(i));
+        for(int i = 0; i< 64; i++){
+            list.insertDescending(moviesFile.readMovie(i));
         }
-        
-
-
-        // Movie movie1 = new Movie("Marcianito 2");
-        // Movie movie2 = new Movie("Chino la pelicula ");
-        // Movie movie3 = new Movie("Aleluya");
-        // Movie movie4 = new Movie("Ted 2");
-        // Movie movie5 = new Movie("Amigo ven te invito una copa");
-        // Movie movie6 = new Movie("Ted 1");
-
-        // listMovies.insertDescending(movie1);
-        // listMovies.insertDescending(movie2);
-        // listMovies.insertDescending(movie3);
-        // listMovies.insertDescending(movie4);
-        // listMovies.insertDescending(movie5);
-        // listMovies.insertDescending(movie6);
+        list.displayList();
         
         
-        listMovies.displayList();
+
+        moviesFile.generarArchivoSalida(list.getFirts());
 
         
         
