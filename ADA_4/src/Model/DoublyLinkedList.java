@@ -9,10 +9,20 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         last = null;
     }
 
+    
+    /** 
+     * Comprueba si la lista está vacía
+     * @return boolean
+     */
     public boolean isEmpty() {
         return first == null;
     }
 
+    
+    /** 
+     * Inserta un elemento al inicio de la lista
+     * @param dd
+     */
     public void insertFirst(E dd) {
         DoublyLink<E> newLink = new DoublyLink<E>(dd);
         if (isEmpty())
@@ -23,6 +33,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         first = newLink;
     }
 
+    
+    /** 
+     * Inserta un elemento al final de la lista
+     * @param dd
+     */
     public void insertLast(E dd) {
         DoublyLink<E> newLink = new DoublyLink<E>(dd);
         if (isEmpty())
@@ -34,6 +49,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         last = newLink;
     }
 
+    
+    /** 
+     * Elimina el primer elemento de la lista
+     * @return DoublyLink<E>
+     */
     public DoublyLink<E> deleteFirst() {
         DoublyLink<E> temp = first;
         if (first.getNext() == null)
@@ -44,6 +64,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return temp;
     }
 
+    
+    /** 
+     * Elimina el último elemento de la lista
+     * @return DoublyLink<E>
+     */
     public DoublyLink<E> deleteLast() {
         DoublyLink<E> temp = last;
         if (first.getNext() == null)
@@ -54,6 +79,13 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return temp;
     }
 
+    
+    /** 
+     * Inserta un elemento despues de otro elemento
+     * @param key
+     * @param dd
+     * @return boolean
+     */
     public boolean insertAfter(E key, E dd) {
         DoublyLink<E> current = first;
         while (current.getdData() != key) {
@@ -74,6 +106,13 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return true;
     }
 
+    
+    /** 
+     * Inserta un elemento antes de otro elemento
+     * @param key
+     * @param dd
+     * @return boolean
+     */
     public boolean insertBefore(E key, E dd) {
         DoublyLink<E> current = first;
         while (current.getdData() != key) {
@@ -95,6 +134,12 @@ public class DoublyLinkedList<E extends Comparable<E>> {
 
     }
 
+    
+    /** 
+     * Elimina un elemento en específico
+     * @param key
+     * @return DoublyLink<E>
+     */
     public DoublyLink<E> deleteKey(E key) {
         DoublyLink<E> current = first;
         while ((current.getdData()) != key) {
@@ -113,6 +158,10 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         return current;
     }
 
+    /** 
+     * Imprime la lista desde el primero hasta el ùltimo
+     * 
+     */
     public void displayForward() {
         System.out.print("List (first-->last): ");
         DoublyLink<E> current = first;
@@ -123,6 +172,10 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
+    /** 
+     * Imprime la lista desde el ùltimo hasta el primero
+     * 
+     */
     public void displayBackward() {
         System.out.print("List (last-->first): ");
         DoublyLink<E> current = last;
@@ -133,6 +186,10 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
+    /** 
+     * Imprime el primer elemento de la lista
+     * 
+     */
     public void displayFirst() {
         DoublyLink<E> current = first;
         System.out.print("El primer elemento de la lista es: ");
@@ -140,6 +197,10 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
+    /** 
+     * Imprime el ùltimo elemento de la lista
+     * 
+     */
     public void displayLast() {
         DoublyLink<E> current = last;
         System.out.print("El último elemento de la lista es: ");
@@ -147,6 +208,10 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("");
     }
 
+    /** 
+     * Imprime el tamaño de la lista
+     * 
+     */
     public void displaySize() {
         DoublyLink<E> current = first;
         int count = 0;
@@ -157,6 +222,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         System.out.println("tamaño de la lista: " + count);
     }
 
+    
+    /** 
+     * Elimina un elemento de la lista en base a su posición
+     * @param position
+     */
     public void deletePosition(int position) {
         DoublyLink<E> current = first;
         int listPosition = 1;
@@ -181,7 +251,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         }
 
     }
-
+    
+    /** 
+     * Elimina todos los elementos de la lista
+     * 
+     */
     public void cleanList() {
         DoublyLink<E> current = first;
 
@@ -207,6 +281,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
 
     }
 
+    
+    /** 
+     * Busca un elemento de la lista y retorna su posición si es encontrado, si no, retorna -1
+     * @param element
+     */
     public void searchElement(E element) {
         DoublyLink<E> current = first;
         E elementList;
@@ -234,6 +313,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
 
     }
 
+    
+    /** 
+     * Inserta un elemento de forma ascendente
+     * @param dd
+     */
     public void insertAscending(E dd) {
         DoublyLink<E> current = first;
 
@@ -270,6 +354,11 @@ public class DoublyLinkedList<E extends Comparable<E>> {
         }
     }
 
+    
+    /** 
+     * Inserta un elemento de manera decendiente
+     * @param dd
+     */
     public void insertDescending(E dd) {
         DoublyLink<E> current = first;
 
