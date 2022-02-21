@@ -9,16 +9,29 @@ public class LinkList<T extends Comparable<T>> {
         first = null;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty() {
         return (first == null);
     }
 
+    
+    /** 
+     * 
+     * @param dd
+     */
     public void insertFirst(T dd) {
         Link<T> newLink = new Link<>(dd);
         newLink.setNext(first);
         first = newLink;
     }
 
+    
+    /** 
+     * @return Link<T>
+     */
     public Link<T> deleteFirst() {
         Link<T> temp = null;
         if (!isEmpty()) {
@@ -38,6 +51,10 @@ public class LinkList<T extends Comparable<T>> {
         System.out.println("<--last)");
     }
 
+    
+    /** 
+     * @return Link<T>
+     */
     // Método extra para recorrer la lista
     private Link<T> recorreLista() {
         Link<T> current;
@@ -49,16 +66,28 @@ public class LinkList<T extends Comparable<T>> {
         return current;
     }
 
+    
+    /** 
+     * @return Link<T>
+     */
     // 1.- Método para devolver el primer elemento sin eliminarlo
     public Link<T> obtenerPrimerElemento() {
         return this.first;
     }
 
+    
+    /** 
+     * @return Link<T>
+     */
     // 2.- Método para devolver el último elemento de la lista
     public Link<T> obtenerUltimoElemento() {
         return this.recorreLista();
     }
 
+    
+    /** 
+     * @return int
+     */
     // 3.- Método que retorne el size de la lista
     public int size() {
         Link<T> current;
@@ -72,6 +101,11 @@ public class LinkList<T extends Comparable<T>> {
         return i;
     }
 
+    
+    /** 
+     * @param dd
+     * @param datoABuscar
+     */
     // Método 4: Insertar un elemento antes de uno proporcionado
     public void insertarAntesDeUnElemento(T dd, T datoABuscar) {
         Link<T> elementoInsertar = new Link<>(dd);
@@ -96,6 +130,11 @@ public class LinkList<T extends Comparable<T>> {
         }
     }
 
+    
+    /** 
+     * @param dd
+     * @param referenceddd
+     */
     // Método 5: insertar un elemento despues de uno proporcionado
     public void insertarDespuesDeUnElemento(T dd, T referenceddd) {
         Link<T> elementoInsertar = new Link<>(dd);
@@ -113,6 +152,10 @@ public class LinkList<T extends Comparable<T>> {
         }
     }
 
+    
+    /** 
+     * @param dd
+     */
     // Método 6: Insertar un elemento de forma ordenada.
     // Método 6A: Insertar un elemento de forma ordenada Creciente
     public void insertAscending(T dd) {
@@ -159,6 +202,10 @@ public class LinkList<T extends Comparable<T>> {
         }
     }
 
+    
+    /** 
+     * @param dd
+     */
     // Método 6B: Insertar un elemento de forma ordenada Decreciente
     public void insertDescending(T dd) {
         Link<T> current = first;
@@ -201,6 +248,10 @@ public class LinkList<T extends Comparable<T>> {
         }
     }
 
+    
+    /** 
+     * @param datoAEliminar
+     */
     // Método 7: Eliminar un elemento proporcionando su dato
     public void eliminarElemento(T datoAEliminar) {
         Link<T> current;
@@ -226,6 +277,10 @@ public class LinkList<T extends Comparable<T>> {
         }
     }
 
+    
+    /** 
+     * @param index
+     */
     // Método 8: Eliminar un elemento proporcionando su indice
     public void eliminarElemento(int index) {
         Link<T> current;
@@ -249,6 +304,11 @@ public class LinkList<T extends Comparable<T>> {
         first = null;
     }
 
+    
+    /** 
+     * @param elemento
+     * @return int
+     */
     // Método 10: busqueda de un elemento
     public int buscarElemento(T elemento) {
         int i = 1;
@@ -265,6 +325,11 @@ public class LinkList<T extends Comparable<T>> {
         return -1;
     }
 
+    
+    /** 
+     * @param dd
+     * @param index
+     */
     // Método 11: reemplazar un nodo por otro nodo mediante una posición
     public void reemplazarElemento(T dd, int index) {
         Link<T> elemento = new Link<>(dd);

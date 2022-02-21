@@ -11,10 +11,18 @@ public class DELinkList {
         last = null;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty() {
         return (first==null);
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void insertFirst(double dd) { 
         DELink newLink = new DELink(dd);
         if(isEmpty())
@@ -23,6 +31,10 @@ public class DELinkList {
         first = newLink;
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void insertLast(double dd) { 
         DELink newLink = new DELink(dd);
         if(isEmpty())
@@ -33,6 +45,10 @@ public class DELinkList {
     }
 
 
+    
+    /** 
+     * @return double
+     */
     public double deleteFirst() {
         double temp = first.dData;
         if(first.next == null)

@@ -5,6 +5,11 @@ import Model.LinkList;
 import Model.Movie;
 
 public class App {
+    
+    /** 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         
         LinkList<Movie> pelisPro = new LinkList<>();
@@ -31,6 +36,7 @@ public class App {
             listMovies.insertDescending(archivoPelis.leerDocumento(i));
         }
 
+        archivoPelis.generarArchivoSalida(listMovies.obtenerPrimerElemento());
         listMovies.displayList();
     }
 }

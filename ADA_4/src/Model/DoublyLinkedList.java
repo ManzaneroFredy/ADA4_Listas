@@ -9,10 +9,18 @@ public class DoublyLinkedList {
         last = null;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty() { 
         return first==null; 
     }
     
+    
+    /** 
+     * @param dd
+     */
     public void insertFirst(long dd){
         DoublyLink newLink = new DoublyLink(dd); 
         if( isEmpty() ) 
@@ -23,6 +31,10 @@ public class DoublyLinkedList {
         first = newLink;
     }
 
+    
+    /** 
+     * @param dd
+     */
     public void insertLast(long dd) {
         DoublyLink newLink = new DoublyLink(dd); 
         if( isEmpty() ) 
@@ -34,6 +46,10 @@ public class DoublyLinkedList {
         last = newLink; 
     }
 
+    
+    /** 
+     * @return DoublyLink
+     */
     public DoublyLink deleteFirst() { 
         DoublyLink temp = first;
         if(first.next == null) 
@@ -44,6 +60,10 @@ public class DoublyLinkedList {
         return temp;
     }
 
+    
+    /** 
+     * @return DoublyLink
+     */
     public DoublyLink deleteLast(){
         DoublyLink temp = last;
         if(first.next == null) 
@@ -54,6 +74,12 @@ public class DoublyLinkedList {
         return temp;
     }
     
+    
+    /** 
+     * @param key
+     * @param dd
+     * @return boolean
+     */
     public boolean insertAfter(long key, long dd) { 
         DoublyLink current = first; 
         while(current.dData != key) {
@@ -75,6 +101,11 @@ public class DoublyLinkedList {
         return true; 
     }
     
+    
+    /** 
+     * @param key
+     * @return DoublyLink
+     */
     public DoublyLink deleteKey(long key) { 
         DoublyLink current = first; 
         while(current.dData != key) {
